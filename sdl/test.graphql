@@ -9,10 +9,26 @@ type Task {
     id: ID!
     createdAt: String!
     content: String!
+    approachCount: Int!
 }
 
 type Approach {
     id: ID!
     createdAt: String!
     content: String!
+    task: Task!
+}
+
+# Preparative Query
+query {
+    taskMainList {
+        id
+        content
+    }
+}
+
+# Query Root Field
+type Query {
+    taskMainList: [Task!]
+    # Task Main List will return the array result with not null Task item.
 }
